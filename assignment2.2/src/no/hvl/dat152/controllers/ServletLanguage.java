@@ -23,6 +23,7 @@ public class ServletLanguage extends HttpServlet {
         Cookie localeCookie = new Cookie("locale", lang);
         localeCookie.setMaxAge(50000);
         response.addCookie(localeCookie);
-        response.sendRedirect(request.getContextPath() + "/");
+        String referer = request.getHeader("referer");
+        response.sendRedirect(referer);
     }
 }
