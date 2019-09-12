@@ -19,6 +19,14 @@
         <servlet-name>ServletLanguage</servlet-name>
         <url-pattern>/language</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletProducts</servlet-name>
+        <servlet-class>no.hvl.dat152.controllers.ServletProducts</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletProducts</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>ServletIndex</welcome-file>
     </welcome-file-list>

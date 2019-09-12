@@ -2,11 +2,9 @@ package no.hvl.dat152.controllers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 
 @WebServlet(name = "ServletLanguage")
@@ -22,8 +20,9 @@ public class ServletLanguage extends HttpServlet {
         } catch (NullPointerException e){
             e.printStackTrace();
         }
-        HttpSession session = request.getSession(true);
-        session.setAttribute("language", lang);
+        Cookie localeCookie = new Cookie("locale", lang);
+        localeCookie.setMaxAge(50000);
+        response.addCookie(localeCookie);
         response.sendRedirect(request.getContextPath() + "/");
     }
 }
