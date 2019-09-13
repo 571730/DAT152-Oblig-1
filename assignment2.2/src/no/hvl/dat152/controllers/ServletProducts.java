@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 @WebServlet(name = "ServletProducts")
 public class ServletProducts extends HttpServlet {
-    public void init(){
+    public void init() {
         Products.addProduct(new Product("Black Coffee Cup", 5.76, "descriptionBlackCoffee"));
         Products.addProduct(new Product("White Coffee Cup", 8.96, "descriptionWhiteCoffee"));
     }
@@ -24,9 +24,10 @@ public class ServletProducts extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(true);
         Cookie languageCookie = Arrays.stream(request.getCookies())
                 .filter(c -> c.getName().equals("locale")).findFirst().orElse(null);
-        if (languageCookie != null){
+        if (languageCookie != null) {
             Config.set(request.getSession(), Config.FMT_LOCALE, languageCookie.getValue());
         } else {
             Locale locale = request.getLocale();
@@ -35,6 +36,12 @@ public class ServletProducts extends HttpServlet {
             localeCookie.setMaxAge(50000);
             response.addCookie(localeCookie);
         }
+        Locale locale = new Locale(languageCookie.getValue());
+        ResourceBundle res = ResourceBundle.getBundle("apptext", locale);
+        double multiplier = Double.parseDouble(res.getString("multiplier"));
+        request.setAttribute("currency", res.getString("currencySymbol"));
+        request.setAttribute("products", Products.getProducts());
+        request.setAttribute("multiplier", multiplier);
         request.getRequestDispatcher("WEB-INF/products.jsp")
                 .forward(request, response);
     }

@@ -17,17 +17,11 @@ public class Product {
         return this.name;
     }
 
-
-    public double getPriceInLocal(ResourceBundle res) {
-        String multiplier = res.getString("multiplier");
-        return price * Double.parseDouble(multiplier);
+    public double getPrice() {
+        return price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDescription(ResourceBundle res) {
-        return res.getString(this.description);
+    public String getDescription() {
+        return description;
     }
 }

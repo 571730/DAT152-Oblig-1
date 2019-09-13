@@ -7,6 +7,6 @@
 <body>
 <a href="${pageContext.request.contextPath}/language?lan=en">English</a>
 <a href="${pageContext.request.contextPath}/language?lan=no">Norsk</a>
-<a href="${pageContext.request.contextPath}/language?lan=fr">François</a>
+<a href="${pageContext.request.contextPath}/language?lan=fr">Français</a>
 </body>
 </html>
