@@ -15,6 +15,7 @@
         <p><fmt:message key="name"/>: ${p.name}</p>
         <p><fmt:message key="price"/>: <fmt:formatNumber value="${multiplier * p.price}" type="currency" currencySymbol="${currency}"/></p>
         <p><fmt:message key="description"/>: <fmt:message key="${p.description}" /></p>
+        <a href="${pageContext.request.contextPath}/add?product=${p.name}"><button><fmt:message key="addToCart" /></button></a>
     </c:forEach>
     <a href="${pageContext.request.contextPath}/"><fmt:message key="home"/></a>
 </fmt:bundle>

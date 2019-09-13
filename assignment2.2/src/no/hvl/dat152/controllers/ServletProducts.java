@@ -24,7 +24,6 @@ public class ServletProducts extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
         Cookie languageCookie = Arrays.stream(request.getCookies())
                 .filter(c -> c.getName().equals("locale")).findFirst().orElse(null);
         if (languageCookie != null) {
