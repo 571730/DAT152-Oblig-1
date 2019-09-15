@@ -19,7 +19,13 @@ public class ServletIndex extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        Cookie languageCookie = Arrays.stream(request.getCookies())
+        Cookie[] cookies = {};
+        try {
+            cookies = request.getCookies();
+        } catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        Cookie languageCookie = Arrays.stream(cookies)
                 .filter(c -> c.getName().equals("locale")).findFirst().orElse(null);
         if (languageCookie != null){
             Config.set(request.getSession(), Config.FMT_LOCALE, languageCookie.getValue());

@@ -17,7 +17,17 @@
         <p><fmt:message key="description"/>: <fmt:message key="${p.description}" /></p>
         <a href="${pageContext.request.contextPath}/add?product=${p.name}"><button><fmt:message key="addToCart" /></button></a>
     </c:forEach>
+    <br>
+    <br>
     <a href="${pageContext.request.contextPath}/"><fmt:message key="home"/></a>
+    <a href="${pageContext.request.contextPath}/cart"><fmt:message key="cart"/></a>
+    <c:if test="${itemAdded != null}">
+        <br>
+        <br>
+        <h3>${itemAdded}<fmt:message key="addedToCart"/></h3>
+        <br>
+        <br>
+    </c:if>
 </fmt:bundle>
 </body>
 </html>

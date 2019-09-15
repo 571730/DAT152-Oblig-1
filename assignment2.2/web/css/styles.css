@@ -4,3 +4,16 @@
 .italic{
     font-style: italic;
 }
+table, th, td {
+    border: 1px solid black;
+    padding: 3px;
+}
+table {
+    border-collapse: collapse;
+}
+.bold{
+    font-weight: bold;
+}
+.right{
+    text-align: right;
+}

@@ -13,4 +13,9 @@ public class Products {
     public static List<Product> getProducts(){
         return products;
     }
+
+    public static Product getProduct(String name){
+        return products.stream().filter(p -> p.getName().equals(name))
+                .findFirst().get();
+    }
 }
