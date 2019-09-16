@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="dat152" tagdir="/WEB-INF/tags"%>
 <html>
 <head>
     <title>Cart</title>
@@ -28,7 +29,11 @@
                 <c:forEach items="${cart.cart}" var="cartItem">
                     <tr>
                         <td>${cartItem.name}</td>
-                        <td><fmt:message key="${cartItem.description}"/></td>
+                        <td>
+                            <dat152:shortDescription>
+                                <fmt:message key="${cartItem.description}"/>
+                            </dat152:shortDescription>
+                        </td>
                         <td><fmt:formatNumber value="${cartItem.price * multiplier}" type="currency" currencySymbol="${currency}"/></td>
                         <td>${cartItem.quantity}</td>
                         <td><fmt:formatNumber value="${cartItem.totalPrice * multiplier}" type="currency" currencySymbol="${currency}"/></td>
@@ -46,6 +51,6 @@
     <a href="${pageContext.request.contextPath}/"><fmt:message key="home"/></a>
     <a href="${pageContext.request.contextPath}/products"><fmt:message key="products"/></a>
 </fmt:bundle>
-<jsp:include page="copyright.jsp"/>
+<dat152:copyright/>
 </body>
 </html>

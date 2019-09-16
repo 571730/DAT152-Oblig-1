@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="dat152" tagdir="/WEB-INF/tags"%>
 <html>
 <head>
     <title>Products</title>
@@ -36,6 +37,6 @@
         <br>
     </c:if>
 </fmt:bundle>
-<jsp:include page="copyright.jsp"/>
+<dat152:copyright/>
 </body>
 </html>
